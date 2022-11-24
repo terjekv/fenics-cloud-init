@@ -1,0 +1,24 @@
+#cloud-config
+apt:
+  sources:
+    fenics:
+      source: "ppa:fenics-packages/fenics"
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg-agent
+  - software-properties-common
+  - build-essential
+  - fenics
+  - python3-pip
+
+# Some users need tools like solve_ivp from scipy.integrate,
+# but this requires a much newer scipy than the original.
+# There does not seem to be any conflicts, thankfully.
+runcmd:
+  - [ pip3, install, --upgrade, scipy]

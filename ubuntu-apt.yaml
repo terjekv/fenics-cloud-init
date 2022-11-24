@@ -1,6 +1,8 @@
 #cloud-config
-apt_sources:
-  - source: "ppa:fenics-packages/fenics"
+apt:
+  sources:
+    fenics:
+      source: "ppa:fenics-packages/fenics"
 
 package_update: true
 package_upgrade: true
